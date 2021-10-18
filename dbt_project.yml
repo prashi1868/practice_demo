@@ -25,12 +25,20 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 
+vars:
+    salary : "35000"
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
 # In this example config, we tell dbt to build all models in the example/ directory
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
+
+on-run-start: "insert into loan.dbt_prashi1868.dbt_audits(audit_type) values('run start');commit;"
+on-run-end: "insert into loan.dbt_prashi1868.dbt_audits(audit_type) values('run end');commit;"
+
+
 models:
   my_new_project:
       # Applies to all files under models/example/
