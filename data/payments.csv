@@ -1,0 +1,5 @@
+payment_id,payment_method
+1,cash
+2,debit_card
+3,credit_card
+4,upi

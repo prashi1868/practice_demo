@@ -1,10 +1,33 @@
 version: 2
 
+models:
+    - name: cust_detail
+      description: "customer personal details"
+      columns:
+          - name: Cust_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: loan_dt
+      description: "Loan details"
+      columns:
+          - name: Loan_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+                - exceptionn
+
 sources:
   - name: dbt_prashi1868
     tables:
       - name: cust_src
-    
-    freshness: # make this a little more strict
+
+freshness: # make this a little more strict
           warn_after: {count: 6, period: hour}
           error_after: {count: 12, period: hour}
+
+
+
